@@ -18,7 +18,8 @@ class AudioManager {
   // Soft, gentle and peaceful chime/bell for timer completion (Task 2.3)
   playBellSound() {
     try {
-      const audio = new Audio('/chime.wav');
+      const basePath = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+      const audio = new Audio(`${basePath}chime.wav`);
       audio.volume = 0.45;
       const playPromise = audio.play();
       if (playPromise !== undefined) {
